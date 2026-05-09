@@ -1,19 +1,20 @@
 app-id: one.alynx.FlipClock
 runtime: org.freedesktop.Platform
-runtime-version: "24.08"
+runtime-version: "25.08"
 sdk: org.freedesktop.Sdk
 command: flipclock
 finish-args:
   # See <https://docs.flatpak.org/en/latest/sandbox-permissions.html#standard-permissions>.
   # OpenGL rendering.
-  - "--device=dri"
+  - --device=dri
   # Share IPC namespace with the host (necessary for X11).
-  - "--share=ipc"
+  - --share=ipc
   # Show windows using X11, if Wayland is not available.
-  - "--socket=fallback-x11"
+  - --socket=fallback-x11
   # Show windows with Wayland.
-  - "--socket=wayland"
+  - --socket=wayland
 modules:
+  - shared-modules/SDL2/SDL2_ttf.json
   - name: flipclock
     buildsystem: meson
     sources:
